@@ -240,7 +240,9 @@ execute "Install AMPs into WARs" do
   user      alfresco_user
   group     alfresco_group
   command   <<-COMMAND.gsub(/^ {2}/, '')
-  
+    
+    mkdir -p #{tomcat_dir}/amps && \\
+    mkdir -p #{tomcat_dir}/amps_share && \\
     java -jar #{tomcat_dir}/bin/alfresco-mmt.jar install #{tomcat_dir}/amps #{temp_dir}/alfresco.war -directory -verbose && \\
     java -jar #{tomcat_dir}/bin/alfresco-mmt.jar list #{temp_dir}/alfresco.war && \\
     java -jar #{tomcat_dir}/bin/alfresco-mmt.jar install #{tomcat_dir}/amps_share #{temp_dir}/share.war -directory -verbose && \\
