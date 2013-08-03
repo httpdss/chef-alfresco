@@ -76,6 +76,7 @@ remote_file archive_zip do
   source      zip_url
   checksum    zip_sha
   mode        "0644"
+  action :create_if_missing
 end
 
 
